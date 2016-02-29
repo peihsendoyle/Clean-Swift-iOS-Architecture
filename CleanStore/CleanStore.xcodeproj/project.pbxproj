@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C866E051C82F8E00022DE6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E041C82F8E00022DE6B /* AppDelegate.swift */; };
+		4C866E0A1C82F8E00022DE6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C866E081C82F8E00022DE6B /* Main.storyboard */; };
+		4C866E0C1C82F8E00022DE6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C866E0B1C82F8E00022DE6B /* Assets.xcassets */; };
+		4C866E0F1C82F8E00022DE6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C866E0D1C82F8E00022DE6B /* LaunchScreen.storyboard */; };
+		4C866E1F1C82FB790022DE6B /* CreateOrderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E181C82FB790022DE6B /* CreateOrderConfigurator.swift */; };
+		4C866E201C82FB790022DE6B /* CreateOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E191C82FB790022DE6B /* CreateOrderInteractor.swift */; };
+		4C866E211C82FB790022DE6B /* CreateOrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1A1C82FB790022DE6B /* CreateOrderModels.swift */; };
+		4C866E221C82FB790022DE6B /* CreateOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1B1C82FB790022DE6B /* CreateOrderPresenter.swift */; };
+		4C866E231C82FB790022DE6B /* CreateOrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1C1C82FB790022DE6B /* CreateOrderRouter.swift */; };
+		4C866E241C82FB790022DE6B /* CreateOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1D1C82FB790022DE6B /* CreateOrderViewController.swift */; };
+		4C866E251C82FB790022DE6B /* CreateOrderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1E1C82FB790022DE6B /* CreateOrderWorker.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4C866E011C82F8E00022DE6B /* CleanStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C866E041C82F8E00022DE6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C866E091C82F8E00022DE6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C866E0B1C82F8E00022DE6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C866E0E1C82F8E00022DE6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4C866E101C82F8E00022DE6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C866E181C82FB790022DE6B /* CreateOrderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderConfigurator.swift; path = Scenes/CreateOrderConfigurator.swift; sourceTree = "<group>"; };
+		4C866E191C82FB790022DE6B /* CreateOrderInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderInteractor.swift; path = Scenes/CreateOrderInteractor.swift; sourceTree = "<group>"; };
+		4C866E1A1C82FB790022DE6B /* CreateOrderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderModels.swift; path = Scenes/CreateOrderModels.swift; sourceTree = "<group>"; };
+		4C866E1B1C82FB790022DE6B /* CreateOrderPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderPresenter.swift; path = Scenes/CreateOrderPresenter.swift; sourceTree = "<group>"; };
+		4C866E1C1C82FB790022DE6B /* CreateOrderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderRouter.swift; path = Scenes/CreateOrderRouter.swift; sourceTree = "<group>"; };
+		4C866E1D1C82FB790022DE6B /* CreateOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderViewController.swift; path = Scenes/CreateOrderViewController.swift; sourceTree = "<group>"; };
+		4C866E1E1C82FB790022DE6B /* CreateOrderWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderWorker.swift; path = Scenes/CreateOrderWorker.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C866DFE1C82F8E00022DE6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C866DF81C82F8E00022DE6B = {
+			isa = PBXGroup;
+			children = (
+				4C866E031C82F8E00022DE6B /* CleanStore */,
+				4C866E021C82F8E00022DE6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C866E021C82F8E00022DE6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C866E011C82F8E00022DE6B /* CleanStore.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C866E031C82F8E00022DE6B /* CleanStore */ = {
+			isa = PBXGroup;
+			children = (
+				4C866E161C82F9340022DE6B /* Scenes */,
+				4C866E041C82F8E00022DE6B /* AppDelegate.swift */,
+				4C866E081C82F8E00022DE6B /* Main.storyboard */,
+				4C866E0B1C82F8E00022DE6B /* Assets.xcassets */,
+				4C866E0D1C82F8E00022DE6B /* LaunchScreen.storyboard */,
+				4C866E101C82F8E00022DE6B /* Info.plist */,
+			);
+			path = CleanStore;
+			sourceTree = "<group>";
+		};
+		4C866E161C82F9340022DE6B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4C866E171C82F93C0022DE6B /* CreateOrder */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		4C866E171C82F93C0022DE6B /* CreateOrder */ = {
+			isa = PBXGroup;
+			children = (
+				4C866E181C82FB790022DE6B /* CreateOrderConfigurator.swift */,
+				4C866E191C82FB790022DE6B /* CreateOrderInteractor.swift */,
+				4C866E1A1C82FB790022DE6B /* CreateOrderModels.swift */,
+				4C866E1B1C82FB790022DE6B /* CreateOrderPresenter.swift */,
+				4C866E1C1C82FB790022DE6B /* CreateOrderRouter.swift */,
+				4C866E1D1C82FB790022DE6B /* CreateOrderViewController.swift */,
+				4C866E1E1C82FB790022DE6B /* CreateOrderWorker.swift */,
+			);
+			name = CreateOrder;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C866E001C82F8E00022DE6B /* CleanStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C866E131C82F8E00022DE6B /* Build configuration list for PBXNativeTarget "CleanStore" */;
+			buildPhases = (
+				4C866DFD1C82F8E00022DE6B /* Sources */,
+				4C866DFE1C82F8E00022DE6B /* Frameworks */,
+				4C866DFF1C82F8E00022DE6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CleanStore;
+			productName = CleanStore;
+			productReference = 4C866E011C82F8E00022DE6B /* CleanStore.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C866DF91C82F8E00022DE6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Zyncas;
+				TargetAttributes = {
+					4C866E001C82F8E00022DE6B = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 56JC3UN7HV;
+					};
+				};
+			};
+			buildConfigurationList = 4C866DFC1C82F8E00022DE6B /* Build configuration list for PBXProject "CleanStore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C866DF81C82F8E00022DE6B;
+			productRefGroup = 4C866E021C82F8E00022DE6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C866E001C82F8E00022DE6B /* CleanStore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C866DFF1C82F8E00022DE6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C866E0F1C82F8E00022DE6B /* LaunchScreen.storyboard in Resources */,
+				4C866E0C1C82F8E00022DE6B /* Assets.xcassets in Resources */,
+				4C866E0A1C82F8E00022DE6B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C866DFD1C82F8E00022DE6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C866E221C82FB790022DE6B /* CreateOrderPresenter.swift in Sources */,
+				4C866E051C82F8E00022DE6B /* AppDelegate.swift in Sources */,
+				4C866E241C82FB790022DE6B /* CreateOrderViewController.swift in Sources */,
+				4C866E1F1C82FB790022DE6B /* CreateOrderConfigurator.swift in Sources */,
+				4C866E251C82FB790022DE6B /* CreateOrderWorker.swift in Sources */,
+				4C866E211C82FB790022DE6B /* CreateOrderModels.swift in Sources */,
+				4C866E201C82FB790022DE6B /* CreateOrderInteractor.swift in Sources */,
+				4C866E231C82FB790022DE6B /* CreateOrderRouter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4C866E081C82F8E00022DE6B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C866E091C82F8E00022DE6B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4C866E0D1C82F8E00022DE6B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C866E0E1C82F8E00022DE6B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C866E111C82F8E00022DE6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4C866E121C82F8E00022DE6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C866E141C82F8E00022DE6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CleanStore/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zyncas.CleanStore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4C866E151C82F8E00022DE6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CleanStore/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zyncas.CleanStore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C866DFC1C82F8E00022DE6B /* Build configuration list for PBXProject "CleanStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C866E111C82F8E00022DE6B /* Debug */,
+				4C866E121C82F8E00022DE6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C866E131C82F8E00022DE6B /* Build configuration list for PBXNativeTarget "CleanStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C866E141C82F8E00022DE6B /* Debug */,
+				4C866E151C82F8E00022DE6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C866DF91C82F8E00022DE6B /* Project object */;
+}
