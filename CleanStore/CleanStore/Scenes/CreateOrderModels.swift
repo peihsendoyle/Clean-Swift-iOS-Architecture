@@ -22,3 +22,18 @@ struct CreateOrderResponse
 struct CreateOrderViewModel
 {
 }
+
+struct CreateOrder_FormatExpirationDate_Request {
+    
+    var date : NSDate
+}
+
+struct CreateOrder_FormatExpirationDate_Response {
+    
+    var date : NSDate
+}
+
+struct CreateOrder_FormatExpirationDate_ViewModel {
+    
+    var date: String
+}
