@@ -14,6 +14,8 @@ import UIKit
 protocol ListOrdersPresenterInput
 {
 //  func presentSomething(response: ListOrdersResponse)
+    
+    func presentFetchedOrders(response: ListOrders_FetchOrders_Response)
 }
 
 protocol ListOrdersPresenterOutput: class
@@ -27,6 +29,9 @@ class ListOrdersPresenter: ListOrdersPresenterInput
   
   // MARK: Presentation logic
   
+    func presentFetchedOrders(response: ListOrders_FetchOrders_Response) {
+        
+    }
 //  func presentSomething(response: ListOrdersResponse)
 //  {
 //    // NOTE: Format the response from the Interactor and pass the result back to the View Controller

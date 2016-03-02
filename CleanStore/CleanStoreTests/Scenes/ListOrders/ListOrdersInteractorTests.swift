@@ -14,40 +14,95 @@ import XCTest
 
 class ListOrdersInteractorTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: ListOrdersInteractor!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupListOrdersInteractor()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupListOrdersInteractor()
-  {
-    sut = ListOrdersInteractor()
-  }
-  
-  // MARK: Test doubles
-  
-  // MARK: Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: Subject under test
     
-    // When
+    var sut: ListOrdersInteractor!
     
-    // Then
-  }
+    // MARK: Test lifecycle
+    
+    override func setUp()
+    {
+        super.setUp()
+        setupListOrdersInteractor()
+    }
+    
+    override func tearDown()
+    {
+        super.tearDown()
+    }
+    
+    // MARK: Test setup
+    
+    func setupListOrdersInteractor()
+    {
+        sut = ListOrdersInteractor()
+    }
+    
+    // MARK: Test doubles
+    
+    class ListOrdersInteractorOutputSpy: ListOrdersInteractorOutput {
+        
+        // MARK: Method call expectations
+        
+        var presentFetchedOrdersCalled = false
+        
+        // MARK: Spied methods
+        
+        func presentFetchedOrders(response: ListOrders_FetchOrders_Response) {
+            
+            presentFetchedOrdersCalled = true
+        }
+    }
+    
+    class OrdersWorkerSpy: OrdersWorker {
+        
+        // MARK: Method call expectations
+        
+        var fetchOrdersCalled = false
+        
+        // MARK: Spied methods
+        
+        override func fetchOrders(completionHandler: (orders: [Order]) -> Void) {
+            
+            fetchOrdersCalled = true
+            
+            completionHandler(orders: [])
+        }
+    }
+    
+    // MARK: Tests
+    
+    func testFetchOrdersShouldAskOrdersWorkerToFetchOrders() {
+        
+        // Given
+        
+        let listOrdersInteractorOutputSpy = ListOrdersInteractorOutputSpy()
+        
+        sut.output = listOrdersInteractorOutputSpy
+        
+        let ordersWorkerSpy = OrdersWorkerSpy()
+        
+        sut.ordersWorker = ordersWorkerSpy
+        
+        // When
+        
+        let request = ListOrders_FetchOrders_Request()
+        
+        sut.fetchOrders(request)
+        
+        // Then
+        
+        XCTAssert(ordersWorkerSpy.fetchOrdersCalled, "FetchOrders() should ask OrdersWorker to fetch orders")
+        
+        XCTAssert(listOrdersInteractorOutputSpy.presentFetchedOrdersCalled, "FetchOrders() should ask presenter to format orders result")
+    }
+    
+//    func testSomething()
+//    {
+//        // Given
+//        
+//        // When
+//        
+//        // Then
+//    }
 }

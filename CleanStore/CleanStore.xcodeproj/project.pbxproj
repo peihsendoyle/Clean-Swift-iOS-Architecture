@@ -30,6 +30,8 @@
 		4C866E231C82FB790022DE6B /* CreateOrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1C1C82FB790022DE6B /* CreateOrderRouter.swift */; };
 		4C866E241C82FB790022DE6B /* CreateOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1D1C82FB790022DE6B /* CreateOrderViewController.swift */; };
 		4C866E251C82FB790022DE6B /* CreateOrderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C866E1E1C82FB790022DE6B /* CreateOrderWorker.swift */; };
+		4C8DC9DF1C86D9F70062B458 /* OrdersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC9DE1C86D9F70062B458 /* OrdersWorker.swift */; };
+		4C8DC9E21C86DB5A0062B458 /* OrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC9E11C86DB5A0062B458 /* OrderModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		4C866E1C1C82FB790022DE6B /* CreateOrderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderRouter.swift; path = Scenes/CreateOrderRouter.swift; sourceTree = "<group>"; };
 		4C866E1D1C82FB790022DE6B /* CreateOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderViewController.swift; path = Scenes/CreateOrderViewController.swift; sourceTree = "<group>"; };
 		4C866E1E1C82FB790022DE6B /* CreateOrderWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateOrderWorker.swift; path = Scenes/CreateOrderWorker.swift; sourceTree = "<group>"; };
+		4C8DC9DE1C86D9F70062B458 /* OrdersWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrdersWorker.swift; path = Workers/OrdersWorker.swift; sourceTree = "<group>"; };
+		4C8DC9E11C86DB5A0062B458 /* OrderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderModels.swift; path = Models/OrderModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 		4C866E031C82F8E00022DE6B /* CleanStore */ = {
 			isa = PBXGroup;
 			children = (
+				4C8DC9E01C86DB490062B458 /* Models */,
+				4C8DC9DD1C86D9BA0062B458 /* Workers */,
 				4C866E161C82F9340022DE6B /* Scenes */,
 				4C866E041C82F8E00022DE6B /* AppDelegate.swift */,
 				4C866E081C82F8E00022DE6B /* Main.storyboard */,
@@ -183,6 +189,22 @@
 				4C866E1E1C82FB790022DE6B /* CreateOrderWorker.swift */,
 			);
 			name = CreateOrder;
+			sourceTree = "<group>";
+		};
+		4C8DC9DD1C86D9BA0062B458 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				4C8DC9DE1C86D9F70062B458 /* OrdersWorker.swift */,
+			);
+			name = Workers;
+			sourceTree = "<group>";
+		};
+		4C8DC9E01C86DB490062B458 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C8DC9E11C86DB5A0062B458 /* OrderModels.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,10 +324,12 @@
 			files = (
 				4C866E221C82FB790022DE6B /* CreateOrderPresenter.swift in Sources */,
 				4C866E051C82F8E00022DE6B /* AppDelegate.swift in Sources */,
+				4C8DC9E21C86DB5A0062B458 /* OrderModels.swift in Sources */,
 				4C1FC6081C858B5C00465006 /* ListOrdersModels.swift in Sources */,
 				4C1FC6091C858B5C00465006 /* ListOrdersPresenter.swift in Sources */,
 				4C1FC6061C858B5C00465006 /* ListOrdersConfigurator.swift in Sources */,
 				4C1FC60C1C858B5C00465006 /* ListOrdersWorker.swift in Sources */,
+				4C8DC9DF1C86D9F70062B458 /* OrdersWorker.swift in Sources */,
 				4C866E241C82FB790022DE6B /* CreateOrderViewController.swift in Sources */,
 				4C866E1F1C82FB790022DE6B /* CreateOrderConfigurator.swift in Sources */,
 				4C866E251C82FB790022DE6B /* CreateOrderWorker.swift in Sources */,
@@ -485,6 +509,7 @@
 				4C1FC6571C858EF100465006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C866DFC1C82F8E00022DE6B /* Build configuration list for PBXProject "CleanStore" */ = {
 			isa = XCConfigurationList;

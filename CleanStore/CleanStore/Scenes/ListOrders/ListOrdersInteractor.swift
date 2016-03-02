@@ -21,30 +21,41 @@ protocol ListOrdersInteractorInput
 protocol ListOrdersInteractorOutput
 {
 //    func presentSomething(response: ListOrdersResponse)
+    
+    func presentFetchedOrders(response: ListOrders_FetchOrders_Response)
 }
 
 class ListOrdersInteractor: ListOrdersInteractorInput
 {
     var output: ListOrdersInteractorOutput!
-    var worker: ListOrdersWorker!
+//    var worker: ListOrdersWorker!
+    
+    var ordersWorker = OrdersWorker()
     
     // MARK: Business logic
     
-    func doSomething(request: ListOrdersRequest)
-    {
-        // NOTE: Create some Worker to do the work
-        
-//        worker = ListOrdersWorker()
-//        worker.doSomeWork()
-        
-        // NOTE: Pass the result to the Presenter
-        
-//        let response = ListOrdersResponse()
-//        output.presentSomething(response)
-    }
+    
+    
+//    func doSomething(request: ListOrdersRequest)
+//    {
+//        // NOTE: Create some Worker to do the work
+//        
+////        worker = ListOrdersWorker()
+////        worker.doSomeWork()
+//        
+//        // NOTE: Pass the result to the Presenter
+//        
+////        let response = ListOrdersResponse()
+////        output.presentSomething(response)
+//    }
     
     func fetchOrders(request: ListOrders_FetchOrders_Request) {
         
-        
+        ordersWorker.fetchOrders { (orders) -> Void in
+            
+            let response = ListOrders_FetchOrders_Response(orders: orders)
+            
+            self.output.presentFetchedOrders(response)
+        }
     }
 }
