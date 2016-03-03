@@ -13,14 +13,14 @@ import UIKit
 
 protocol CreateOrderPresenterInput
 {
-    func presentSomething(response: CreateOrderResponse)
+//    func presentSomething(response: CreateOrderResponse)
     
     func presentExpirationDate(response: CreateOrder_FormatExpirationDate_Response)
 }
 
 protocol CreateOrderPresenterOutput: class
 {
-    func displaySomething(viewModel: CreateOrderViewModel)
+//    func displaySomething(viewModel: CreateOrderViewModel)
     
     func displayExpirationDate(viewModel: CreateOrder_FormatExpirationDate_ViewModel)
 }
@@ -42,13 +42,13 @@ class CreateOrderPresenter: CreateOrderPresenterInput {
     
     // MARK: Presentation logic
     
-    func presentSomething(response: CreateOrderResponse)
-    {
-        // NOTE: Format the response from the Interactor and pass the result back to the View Controller
-        
-        let viewModel = CreateOrderViewModel()
-        output.displaySomething(viewModel)
-    }
+//    func presentSomething(response: CreateOrderResponse)
+//    {
+//        // NOTE: Format the response from the Interactor and pass the result back to the View Controller
+//        
+//        let viewModel = CreateOrderViewModel()
+//        output.displaySomething(viewModel)
+//    }
     
     // MARK: Expiration date
     func presentExpirationDate(response: CreateOrder_FormatExpirationDate_Response) {

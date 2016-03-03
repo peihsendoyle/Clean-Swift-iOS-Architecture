@@ -13,14 +13,14 @@ import UIKit
 
 protocol CreateOrderViewControllerInput
 {
-    func displaySomething(viewModel: CreateOrderViewModel)
+//    func displaySomething(viewModel: CreateOrderViewModel)
     
     func displayExpirationDate(viewModel: CreateOrder_FormatExpirationDate_ViewModel)
 }
 
 protocol CreateOrderViewControllerOutput
 {
-    func doSomething(request: CreateOrderRequest)
+//    func doSomething(request: CreateOrderRequest)
     
     var shippingMethods : [String] { get }
     
@@ -73,7 +73,7 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
         
         
         
-        doSomethingOnLoad()
+//        doSomethingOnLoad()
         
         configurePickers()
     }
@@ -87,14 +87,14 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     
     // MARK: Event handling
     
-    func doSomethingOnLoad()
-    {
-        // NOTE: Ask the Interactor to do some work
-        
-        let request = CreateOrderRequest()
-        
-        output.doSomething(request)
-    }
+//    func doSomethingOnLoad()
+//    {
+//        // NOTE: Ask the Interactor to do some work
+//        
+//        let request = CreateOrderRequest()
+//        
+//        output.doSomething(request)
+//    }
     
     // MARK: Display logic
     
