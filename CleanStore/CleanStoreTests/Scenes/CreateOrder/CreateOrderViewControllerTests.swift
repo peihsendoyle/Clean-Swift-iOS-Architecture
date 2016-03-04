@@ -43,6 +43,8 @@ class CreateOrderViewControllerTests: XCTestCase
         sut = storyboard.instantiateViewControllerWithIdentifier("CreateOrderViewController") as! CreateOrderViewController
         
         _ = sut.view
+        
+        loadView()
     }
     
     func loadView()
@@ -201,6 +203,86 @@ class CreateOrderViewControllerTests: XCTestCase
         let displayedShippingMethod = sut.shippingMethodTextField.text
         
         XCTAssertEqual(expectedShippingMethod, displayedShippingMethod, "Should be the same")
+    }
+    
+    func testCursorFocusShouldMoveToNextTextFieldWhenUserTapsReturnKey() {
+        
+        // Given
+        
+        let currentTextField = sut.textFields[0]
+        
+        let nextTextField = sut.textFields[1]
+        
+        currentTextField.becomeFirstResponder()
+        
+        // When
+        
+        sut.textFieldShouldReturn(currentTextField)
+        
+        // Then
+        
+        XCTAssert(!currentTextField.isFirstResponder(), "Current text field should lose keyboard focus")
+        
+        XCTAssert(nextTextField.isFirstResponder(), "Next text field should gain keyboard focus")
+    }
+    
+    func testKeyboardShouldBeDismissedWhenUserTapsReturnKeyWhenFocusIsInLastTextField() {
+        
+        // Given
+        
+        // Scroll to the bottom of table view so the last text field is visible and its recognizer is set up
+        
+        let lastSectionIndex = sut.tableView.numberOfSections - 1
+        
+        let lastRowIndex = sut.tableView.numberOfRowsInSection(lastSectionIndex) - 1
+        
+        sut.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: lastRowIndex, inSection: lastSectionIndex), atScrollPosition: .Bottom, animated: false)
+        
+        // Show keyboard for the last text field
+        
+        let numTextFields = sut.textFields.count
+        
+        let lastTextField = sut.textFields[numTextFields - 1]
+        
+        lastTextField.becomeFirstResponder()
+        
+        // When
+        
+        sut.textFieldShouldReturn(lastTextField)
+        
+        // Then
+        
+        XCTAssert(!lastTextField.isFirstResponder(), "Last text field should lose the keyboard focus")
+    }
+    
+    func testTextFieldShouldHaveFocusWhenUserTapsOnTableViewRow() {
+        
+        // Given
+        
+        // When
+        
+        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        
+        sut.tableView(sut.tableView, didSelectRowAtIndexPath: indexPath)
+        
+        // Then
+        
+        let textField = sut.textFields[1]
+        
+        XCTAssert(textField.isFirstResponder(), "The text field should have keyboard focus when user taps on the corresponding table view row")
+    }
+    
+    func testCreateOrderViewControllerShouldConfigurePickersWhenViewIsLoaded() {
+        
+        // Given
+        
+        // When
+        
+        // Then
+        
+        XCTAssertEqual(sut.expirationDateTextField.inputView, sut.expirationDatePicker, "picker should be input view of text field")
+        
+        XCTAssertEqual(sut.shippingMethodTextField.inputView, sut.shippingMethodPicker, "picker should be input view of text field")
     }
     
     func testSomething()

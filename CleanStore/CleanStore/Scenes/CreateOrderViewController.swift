@@ -67,6 +67,11 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     
     // MARK: View lifecycle
     
+    @IBAction func dismissCurrentViewController(sender: AnyObject) {
+        
+        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -105,6 +110,11 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
 //        // nameTextField.text = viewModel.name
 //    }
     
+    func dismissCurrentViewController() {
+        
+        
+    }
+    
     func displayExpirationDate(viewModel: CreateOrder_FormatExpirationDate_ViewModel) {
         
         let date = viewModel.date
@@ -114,14 +124,11 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     
     // MARK: UITableView Delegates
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            
             for textField in textFields {
-                
                 if textField.isDescendantOfView(cell) {
-                    
                     textField.becomeFirstResponder()
                 }
             }
@@ -130,20 +137,15 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     
     // MARK: TextField Delegates
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
         textField.resignFirstResponder()
-        
         if let index = textFields.indexOf(textField) {
-            
             if index < textFields.count - 1 {
-                
-                let nextTextField = self.textFields[index + 1]
-                
+                let nextTextField = textFields[index + 1]
                 nextTextField.becomeFirstResponder()
             }
         }
-        
         return true
     }
     
@@ -166,8 +168,8 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     
     // MARK: UIPickerView Delegates
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
         shippingMethodTextField.text = output.shippingMethods[row]
     }
 }
