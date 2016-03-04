@@ -14,51 +14,201 @@ import XCTest
 
 class CreateOrderViewControllerTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: CreateOrderViewController!
-  var window: UIWindow!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    window = UIWindow()
-    setupCreateOrderViewController()
-  }
-  
-  override func tearDown()
-  {
-    window = nil
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupCreateOrderViewController()
-  {
-    let bundle = NSBundle.mainBundle()
-    let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-    sut = storyboard.instantiateViewControllerWithIdentifier("CreateOrderViewController") as! CreateOrderViewController
-  }
-  
-  func loadView()
-  {
-    window.addSubview(sut.view)
-    NSRunLoop.currentRunLoop().runUntilDate(NSDate())
-  }
-  
-  // MARK: Test doubles
-  
-  // MARK: Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: Subject under test
     
-    // When
+    var sut: CreateOrderViewController!
+    var window: UIWindow!
     
-    // Then
-  }
+    // MARK: Test lifecycle
+    
+    override func setUp()
+    {
+        super.setUp()
+        window = UIWindow()
+        setupCreateOrderViewController()
+    }
+    
+    override func tearDown()
+    {
+        window = nil
+        super.tearDown()
+    }
+    
+    // MARK: Test setup
+    
+    func setupCreateOrderViewController()
+    {
+        let bundle = NSBundle.mainBundle()
+        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+        sut = storyboard.instantiateViewControllerWithIdentifier("CreateOrderViewController") as! CreateOrderViewController
+        
+        _ = sut.view
+    }
+    
+    func loadView()
+    {
+        window.addSubview(sut.view)
+        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+    }
+    
+    // MARK: Test doubles
+    
+    class CreateOrderViewControllerOutputSpy: CreateOrderViewControllerOutput {
+        
+        // MARK: Method call expectations
+        
+        var formatExpirationDateCalled = false
+        
+        // MARK: Argument expectations
+        
+        var createOrder_FormatExpirationDate_Request : CreateOrder_FormatExpirationDate_Request!
+        
+        // MARK: Spied variables
+        
+        var shippingMethods = [String]()
+        
+        // MARK: Spied methods
+        
+        func formatExpirationDate(request: CreateOrder_FormatExpirationDate_Request) {
+            
+            formatExpirationDateCalled = true
+            
+            createOrder_FormatExpirationDate_Request = request
+        }
+    }
+    
+    // MARK: Tests
+    
+    func testDisplayExpirationDateShouldDisplayDateStringInTextField() {
+        
+        // Given
+        
+        let viewModel = CreateOrder_FormatExpirationDate_ViewModel(date: "03/03/2016")
+        
+        // When
+        
+        sut.displayExpirationDate(viewModel)
+        
+        // Then
+        
+        let displayedDate = sut.expirationDateTextField.text
+        
+        XCTAssertEqual(displayedDate, "03/03/2016", "Displaying an expiration date should display the date string in the expiration date text field")
+    }
+    
+    func testExpirationDatePickerValueChangedShouldFormatSelectedDate() {
+        
+        // Given
+        
+        let createOrderViewControllerOutputSpy = CreateOrderViewControllerOutputSpy()
+        
+        sut.output = createOrderViewControllerOutputSpy
+        
+        // When
+        
+        let dateComponents = NSDateComponents()
+        
+        dateComponents.year = 16
+        
+        dateComponents.month = 03
+        
+        dateComponents.day = 03
+        
+        let selectedDate = NSCalendar.currentCalendar().dateFromComponents(dateComponents)!
+        
+        sut.expirationDatePicker.date = selectedDate
+        
+        sut.expirationDatePickerValueChanged(self)
+        
+        // Then
+        
+        XCTAssert(createOrderViewControllerOutputSpy.formatExpirationDateCalled, "Changing the expiration date should format the expiration date")
+        
+        let actualDate = createOrderViewControllerOutputSpy.createOrder_FormatExpirationDate_Request.date
+        
+        XCTAssertEqual(actualDate, selectedDate, "Changing the expiration date should format the date selected in the date picker")
+    }
+    
+    func testNumberOfComponentsInPickerViewShouldReturnOneComponent() {
+        
+        // Given
+        
+        let pickerView = sut.shippingMethodPicker
+        
+        // When
+        
+        let numberOfComponents = sut.numberOfComponentsInPickerView(pickerView)
+        
+        // Then
+        
+        XCTAssertEqual(numberOfComponents, 1, "The number in the shipping method picker should be 1")
+    }
+    
+    func testNumberOfRowsInFirstComponentOfPickerViewShouldEqualNumberOfAvailableShippingMethods() {
+        
+        // Given
+        
+        let pickerView = sut.shippingMethodPicker
+        
+        // When
+        
+        let numberOfRows = sut.pickerView(pickerView, numberOfRowsInComponent: 0)
+        
+        // Then
+        
+        let numberOfAvailableShippingMethods = sut.output.shippingMethods.count
+        
+        XCTAssertEqual(numberOfRows, numberOfAvailableShippingMethods, "Number of rows in shipping method picker should be the same with number of available shipping methods")
+    }
+    
+    func testShippingMethodPickerShouldDisplayProperTitles() {
+        
+        // Given
+        
+        let pickerView = sut.shippingMethodPicker
+        
+        // When
+        
+        let returnedTitles = [sut.pickerView(pickerView, titleForRow: 0, forComponent: 0),
+                              sut.pickerView(pickerView, titleForRow: 1, forComponent: 0),
+                              sut.pickerView(pickerView, titleForRow: 2, forComponent: 0)]
+        
+        // Then
+        
+        let expectedTitles = ["Standard Shipping", "2-day Shipping", "1-day Shipping"]
+        
+        XCTAssertEqual(expectedTitles[0], returnedTitles[0], "Should be the same")
+        
+        XCTAssertEqual(expectedTitles[1], returnedTitles[1], "Should be the same")
+        
+        XCTAssertEqual(expectedTitles[2], returnedTitles[2], "Should be the same")
+    }
+    
+    func testSelectingShippingMethodInThePickerShouldDisplayTheSelectedShippingMethodToUser() {
+        
+        // Given
+        
+        let pickerView = sut.shippingMethodPicker
+        
+        // When
+        
+        sut.pickerView(pickerView, didSelectRow: 1, inComponent: 0)
+        
+        // Then
+        
+        let expectedShippingMethod = "2-day Shipping"
+        
+        let displayedShippingMethod = sut.shippingMethodTextField.text
+        
+        XCTAssertEqual(expectedShippingMethod, displayedShippingMethod, "Should be the same")
+    }
+    
+    func testSomething()
+    {
+        // Given
+        
+        // When
+        
+        // Then
+    }
 }

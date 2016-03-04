@@ -98,18 +98,18 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     
     // MARK: Display logic
     
-    func displaySomething(viewModel: CreateOrderViewModel)
-    {
-        // NOTE: Display the result from the Presenter
-        
-        // nameTextField.text = viewModel.name
-    }
+//    func displaySomething(viewModel: CreateOrderViewModel)
+//    {
+//        // NOTE: Display the result from the Presenter
+//        
+//        // nameTextField.text = viewModel.name
+//    }
     
     func displayExpirationDate(viewModel: CreateOrder_FormatExpirationDate_ViewModel) {
         
         let date = viewModel.date
         
-        expirationDateTextField.text = date
+        expirationDateTextField!.text = date
     }
     
     // MARK: UITableView Delegates
