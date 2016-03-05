@@ -80,7 +80,7 @@ class ListOrdersInteractorTests: XCTestCase
         
         sut.output = listOrdersInteractorOutputSpy
         
-        let ordersWorkerSpy = OrdersWorkerSpy()
+        let ordersWorkerSpy = OrdersWorkerSpy(ordersStore: OrdersMemStore())
         
         sut.ordersWorker = ordersWorkerSpy
         

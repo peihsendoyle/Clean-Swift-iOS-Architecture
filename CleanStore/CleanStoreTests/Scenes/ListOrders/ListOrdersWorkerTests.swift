@@ -14,40 +14,40 @@ import XCTest
 
 class ListOrdersWorkerTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: ListOrdersWorker!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupListOrdersWorker()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupListOrdersWorker()
-  {
-    sut = ListOrdersWorker()
-  }
-  
-  // MARK: Test doubles
-  
-  // MARK: Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: Subject under test
     
-    // When
+    var sut: ListOrdersWorker!
     
-    // Then
-  }
+    // MARK: Test lifecycle
+    
+    override func setUp()
+    {
+        super.setUp()
+        setupListOrdersWorker()
+    }
+    
+    override func tearDown()
+    {
+        super.tearDown()
+    }
+    
+    // MARK: Test setup
+    
+    func setupListOrdersWorker()
+    {
+        sut = ListOrdersWorker()
+    }
+    
+    // MARK: Test doubles
+    
+    // MARK: Tests
+    
+    func testSomething()
+    {
+        // Given
+        
+        // When
+        
+        // Then
+    }
 }

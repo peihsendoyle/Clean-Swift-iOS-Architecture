@@ -30,7 +30,7 @@ class ListOrdersInteractor: ListOrdersInteractorInput
     var output: ListOrdersInteractorOutput!
 //    var worker: ListOrdersWorker!
     
-    var ordersWorker = OrdersWorker()
+    var ordersWorker = OrdersWorker(ordersStore: OrdersMemStore())
     
     // MARK: Business logic
     
