@@ -13,8 +13,8 @@ import UIKit
 
 // MARK: Connect View, Interactor, and Presenter
 
-extension ListOrdersViewController: ListOrdersPresenterOutput
-{
+extension ListOrdersViewController: ListOrdersPresenterOutput {
+    
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
   {
     router.passDataToNextScene(segue)

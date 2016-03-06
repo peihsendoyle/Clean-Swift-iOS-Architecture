@@ -13,7 +13,8 @@ import UIKit
 
 protocol ListOrdersViewControllerInput
 {
-//  func displaySomething(viewModel: ListOrdersViewModel)
+    func displayFetchedOrders(viewModel: ListOrders_FetchOrders_ViewModel)
+    
 }
 
 protocol ListOrdersViewControllerOutput
@@ -71,4 +72,9 @@ class ListOrdersViewController: UITableViewController, ListOrdersViewControllerI
     
     // nameTextField.text = viewModel.name
   }
+    
+    func displayFetchedOrders(viewModel: ListOrders_FetchOrders_ViewModel) {
+        
+        
+    }
 }

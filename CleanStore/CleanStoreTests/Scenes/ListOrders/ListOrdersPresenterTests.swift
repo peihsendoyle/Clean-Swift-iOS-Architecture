@@ -14,40 +14,134 @@ import XCTest
 
 class ListOrdersPresenterTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: ListOrdersPresenter!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupListOrdersPresenter()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupListOrdersPresenter()
-  {
-    sut = ListOrdersPresenter()
-  }
-  
-  // MARK: Test doubles
-  
-  // MARK: Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: Subject under test
     
-    // When
+    var sut: ListOrdersPresenter!
     
-    // Then
-  }
+    // MARK: Test lifecycle
+    
+    override func setUp()
+    {
+        super.setUp()
+        setupListOrdersPresenter()
+    }
+    
+    override func tearDown()
+    {
+        super.tearDown()
+    }
+    
+    // MARK: Test setup
+    
+    func setupListOrdersPresenter()
+    {
+        sut = ListOrdersPresenter()
+    }
+    
+    // MARK: Test doubles
+    
+    class ListOrdersPresenterOutputSpy: ListOrdersPresenterOutput
+    {
+        // MARK: Method call expectations
+        
+        var displayFetchedOrdersCalled = false
+        
+        // MARK: Argument expectations
+        
+        var listOrders_fetchOrders_viewModel: ListOrders_FetchOrders_ViewModel!
+        
+        // MARK: Spied methods
+        
+        func displayFetchedOrders(viewModel: ListOrders_FetchOrders_ViewModel) {
+            
+            displayFetchedOrdersCalled = true
+            
+            listOrders_fetchOrders_viewModel = viewModel
+        }
+    }
+    
+    // MARK: Tests
+    
+    func testSomething()
+    {
+        // Given
+        
+        // When
+        
+        // Then
+    }
+    
+    func testPresentFetchedOrdersShouldFormatFetchedOrdersForDisplay() {
+        
+        // Given
+        
+        let listOrdersPresenterOutputSpy = ListOrdersPresenterOutputSpy()
+        
+        sut.output = listOrdersPresenterOutputSpy
+        
+        // When
+        
+        let dateComponents = NSDateComponents()
+        
+        dateComponents.year = 16
+        
+        dateComponents.month = 3
+        
+        dateComponents.day = 3
+        
+        let date = NSCalendar.currentCalendar().dateFromComponents(dateComponents)!
+        
+        let orders = [Order(id: "doyle", date: date, email: "peihsen.doyle@gmail.com", firstName: "Nguyen", lastName: "Hieu Hiep", total: NSDecimalNumber(string: "1.23"))]
+        
+        let response = ListOrders_FetchOrders_Response(orders: orders)
+        
+        sut.presentFetchedOrders(response)
+        
+        // Then
+        
+        let displayedOrders = listOrdersPresenterOutputSpy.listOrders_fetchOrders_viewModel.displayedOrders
+        
+        for displayedOrder in displayedOrders {
+            
+            XCTAssertEqual(displayedOrder.id, "doyle", "Presenting fetched orders should properly format order ID")
+            
+            XCTAssertEqual(displayedOrder.date, "3/3/16", "Presenting fetched orders should properly format order date")
+            
+            XCTAssertEqual(displayedOrder.email, "peihsen.doyle@gmail.com", "Presenting fetched orders should properly format email")
+            
+            XCTAssertEqual(displayedOrder.name, "Nguyen Hieu Hiep", "Presenting fetched orders should properly format name")
+            
+            XCTAssertEqual(displayedOrder.total, "$1.23", "Presenting fetched orders should properly format total")
+        }
+    }
+    
+    func testPresentFetchedOrdersShouldAskViewControllerToDisplayFetchedOrders() {
+        
+        // Given
+        
+        let listOrdersPresenterOutputSpy = ListOrdersPresenterOutputSpy()
+        
+        sut.output = listOrdersPresenterOutputSpy
+        
+        // When
+        
+        let orders = [Order(id: "doyle", date: NSDate(), email: "peihsen.doyle@gmail.com", firstName: "Nguyen", lastName: "Hieu Hiep", total: NSDecimalNumber(string: "1.23"))]
+        
+        let response = ListOrders_FetchOrders_Response(orders: orders)
+        
+        sut.presentFetchedOrders(response)
+        
+        // Then
+        
+        XCTAssert(listOrdersPresenterOutputSpy.displayFetchedOrdersCalled, "Presenting fetched orders should ask view controller to display them")
+    }
 }
+
+
+
+
+
+
+
+
+
