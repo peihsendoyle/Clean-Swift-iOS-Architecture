@@ -19,43 +19,45 @@ protocol ListOrdersViewControllerInput
 
 protocol ListOrdersViewControllerOutput
 {
-//  func doSomething(request: ListOrdersRequest)
+    //  func doSomething(request: ListOrdersRequest)
     
     func fetchOrders(request: ListOrders_FetchOrders_Request)
 }
 
-class ListOrdersViewController: UITableViewController, ListOrdersViewControllerInput
-{
-  var output: ListOrdersViewControllerOutput!
-  var router: ListOrdersRouter!
-  
-  // MARK: Object lifecycle
-  
-  override func awakeFromNib()
-  {
-    super.awakeFromNib()
-    ListOrdersConfigurator.sharedInstance.configure(self)
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-//    doSomethingOnLoad()
+class ListOrdersViewController: UITableViewController, ListOrdersViewControllerInput {
     
-    fetchOrdersOnLoad()
-  }
-  
-  // MARK: Event handling
-  
-//  func doSomethingOnLoad()
-//  {
-//    // NOTE: Ask the Interactor to do some work
-//    
-//    let request = ListOrdersRequest()
-////    output.doSomething(request)
-//  }
+    var output: ListOrdersViewControllerOutput!
+    var router: ListOrdersRouter!
+    
+    var displayedOrders : [ListOrders_FetchOrders_ViewModel.DisplayedOrder] = []
+    
+    // MARK: Object lifecycle
+    
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        ListOrdersConfigurator.sharedInstance.configure(self)
+    }
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        //    doSomethingOnLoad()
+        
+        fetchOrdersOnLoad()
+    }
+    
+    // MARK: Event handling
+    
+    //  func doSomethingOnLoad()
+    //  {
+    //    // NOTE: Ask the Interactor to do some work
+    //
+    //    let request = ListOrdersRequest()
+    ////    output.doSomething(request)
+    //  }
     
     func fetchOrdersOnLoad() {
         
@@ -63,18 +65,48 @@ class ListOrdersViewController: UITableViewController, ListOrdersViewControllerI
         
         output.fetchOrders(request)
     }
-  
-  // MARK: Display logic
-  
-  func displaySomething(viewModel: ListOrdersViewModel)
-  {
-    // NOTE: Display the result from the Presenter
     
-    // nameTextField.text = viewModel.name
-  }
+    // MARK: Display logic
+    
+    func displaySomething(viewModel: ListOrdersViewModel)
+    {
+        // NOTE: Display the result from the Presenter
+        
+        // nameTextField.text = viewModel.name
+    }
     
     func displayFetchedOrders(viewModel: ListOrders_FetchOrders_ViewModel) {
         
+        displayedOrders = viewModel.displayedOrders
         
+        tableView.reloadData()
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return displayedOrders.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let displayedOrder = displayedOrders[indexPath.row]
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier("OrderTableViewCell")
+        
+        if cell == nil {
+            
+            cell = UITableViewCell(style: .Value1, reuseIdentifier: "OrderTableViewCell")
+        }
+        
+        cell?.textLabel?.text = displayedOrder.date
+        
+        cell?.detailTextLabel?.text = displayedOrder.total
+        
+        return cell!
     }
 }

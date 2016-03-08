@@ -65,6 +65,19 @@ class ListOrdersViewControllerTests: XCTestCase
         }
     }
     
+    class TableViewSpy: UITableView {
+        
+        // MARK: Method call expectations
+        
+        var reloadDataCalled = false
+        
+        // Spied methods
+        
+        override func reloadData() {
+            
+            reloadDataCalled = true
+        }
+    }
     // MARK: Tests
     
     func testShouldFetchOrdersWhenViewIsLoaded() {
@@ -84,12 +97,81 @@ class ListOrdersViewControllerTests: XCTestCase
         XCTAssert(listOrdersViewControllerOutputSpy.fetchOrdersCalled, "Should fetch orders when view is loaded")
     }
     
-    func testSomething()
-    {
+    func testShouldDisplayFetchedOrders() {
+        
         // Given
+        
+        let tableViewSpy = TableViewSpy()
+        
+        sut.tableView = tableViewSpy
         
         // When
         
+        let displayedOrders = [ListOrders_FetchOrders_ViewModel.DisplayedOrder(id: "doyle", date: "03/03/16", email: "peihsen.doyle@gmail.com", name: "Nguyen Hieu Hiep", total: "$1.23")]
+        
+        let viewModel = ListOrders_FetchOrders_ViewModel(displayedOrders: displayedOrders)
+        
+        sut.displayFetchedOrders(viewModel)
+        
         // Then
+        
+        XCTAssert(tableViewSpy.reloadDataCalled, "Displaying fetched orders should reload the table view")
+    }
+    
+    func testNumberOfSectionsInTableViewShouldAlwaysBeOne() {
+        
+        // Given
+        
+        let tableView = sut.tableView
+        
+        // When
+        
+        let numberOfSections = sut.numberOfSectionsInTableView(tableView)
+        
+        // Then
+        
+        XCTAssertEqual(numberOfSections, 1, "Should be the same")
+    }
+    
+    func testNumberOfRowsInAnySectionShouldEqaulNumberOfOrdersToDisplay() {
+        
+        // Given
+        
+        let tableView = sut.tableView
+        
+        // When
+        
+        let testDisplayedOrders = [ListOrders_FetchOrders_ViewModel.DisplayedOrder(id: "doyle", date: "03/03/16", email: "peihsen.doyle@gmail.com", name: "Nguyen Hieu Hiep", total: "$1.23")]
+        
+        sut.displayedOrders = testDisplayedOrders
+        
+        // Then
+        
+        let numberOfRows = tableView.numberOfRowsInSection(0)
+        
+        XCTAssertEqual(numberOfRows, testDisplayedOrders.count, "Number of test displayed orders should be the same as numberOfRows")
+    }
+    
+    func testShouldConfigureTableViewCellToDisplayOrder() {
+        
+        // Given
+        
+        let tableView = sut.tableView
+        
+        // When
+        
+        let testDisplayedOrders = [ListOrders_FetchOrders_ViewModel.DisplayedOrder(id: "doyle", date: "03/03/16", email: "peihsen.doyle@gmail.com", name: "Nguyen Hieu Hiep", total: "$1.23")]
+        
+        sut.displayedOrders = testDisplayedOrders
+        
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        
+        let cell = sut.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        
+        // Then
+        
+        XCTAssertEqual(cell.textLabel?.text, "03/03/16", "Should be the same")
+        
+        XCTAssertEqual(cell.detailTextLabel?.text, "$1.23", "Should be the same")
     }
 }
