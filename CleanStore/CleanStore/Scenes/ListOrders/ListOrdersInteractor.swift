@@ -16,6 +16,8 @@ protocol ListOrdersInteractorInput
     //  func doSomething(request: ListOrdersRequest)
     
     func fetchOrders(request: ListOrders_FetchOrders_Request)
+    
+    var orders: [Order]? { get }
 }
 
 protocol ListOrdersInteractorOutput
@@ -31,6 +33,8 @@ class ListOrdersInteractor: ListOrdersInteractorInput
 //    var worker: ListOrdersWorker!
     
     var ordersWorker = OrdersWorker(ordersStore: OrdersMemStore())
+    
+    var orders: [Order]?
     
     // MARK: Business logic
     
@@ -52,6 +56,8 @@ class ListOrdersInteractor: ListOrdersInteractorInput
     func fetchOrders(request: ListOrders_FetchOrders_Request) {
         
         ordersWorker.fetchOrders { (orders) -> Void in
+            
+            self.orders = orders
             
             let response = ListOrders_FetchOrders_Response(orders: orders)
             

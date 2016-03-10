@@ -14,22 +14,19 @@ import UIKit
 protocol ListOrdersViewControllerInput
 {
     func displayFetchedOrders(viewModel: ListOrders_FetchOrders_ViewModel)
-    
 }
 
 protocol ListOrdersViewControllerOutput
 {
-    //  func doSomething(request: ListOrdersRequest)
-    
     func fetchOrders(request: ListOrders_FetchOrders_Request)
+    var orders: [Order]? { get }
 }
 
-class ListOrdersViewController: UITableViewController, ListOrdersViewControllerInput {
-    
+class ListOrdersViewController: UITableViewController, ListOrdersViewControllerInput
+{
     var output: ListOrdersViewControllerOutput!
     var router: ListOrdersRouter!
-    
-    var displayedOrders : [ListOrders_FetchOrders_ViewModel.DisplayedOrder] = []
+    var displayedOrders: [ListOrders_FetchOrders_ViewModel.DisplayedOrder] = []
     
     // MARK: Object lifecycle
     
@@ -44,69 +41,46 @@ class ListOrdersViewController: UITableViewController, ListOrdersViewControllerI
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //    doSomethingOnLoad()
-        
         fetchOrdersOnLoad()
     }
     
     // MARK: Event handling
     
-    //  func doSomethingOnLoad()
-    //  {
-    //    // NOTE: Ask the Interactor to do some work
-    //
-    //    let request = ListOrdersRequest()
-    ////    output.doSomething(request)
-    //  }
-    
-    func fetchOrdersOnLoad() {
-        
+    func fetchOrdersOnLoad()
+    {
         let request = ListOrders_FetchOrders_Request()
-        
         output.fetchOrders(request)
     }
     
     // MARK: Display logic
     
-    func displaySomething(viewModel: ListOrdersViewModel)
+    func displayFetchedOrders(viewModel: ListOrders_FetchOrders_ViewModel)
     {
-        // NOTE: Display the result from the Presenter
-        
-        // nameTextField.text = viewModel.name
-    }
-    
-    func displayFetchedOrders(viewModel: ListOrders_FetchOrders_ViewModel) {
-        
         displayedOrders = viewModel.displayedOrders
-        
         tableView.reloadData()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
+    // MARK: Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return displayedOrders.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let displayedOrder = displayedOrders[indexPath.row]
-        
         var cell = tableView.dequeueReusableCellWithIdentifier("OrderTableViewCell")
-        
         if cell == nil {
-            
             cell = UITableViewCell(style: .Value1, reuseIdentifier: "OrderTableViewCell")
         }
-        
         cell?.textLabel?.text = displayedOrder.date
-        
         cell?.detailTextLabel?.text = displayedOrder.total
-        
         return cell!
     }
 }

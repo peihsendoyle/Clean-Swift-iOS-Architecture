@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OrdersAPI: OrdersStoreProtocol {
+class OrdersAPI {
     
     func fetchOrders(completionHandler: (orders: [Order]) -> Void) {
         
